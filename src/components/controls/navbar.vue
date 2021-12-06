@@ -26,11 +26,11 @@
             
         </div>
         <drawer title="我是一个抽屉组件" 
-            :display.sync="display" :inner="true" 
+            :display.sync="display" :inner="false" 
             :width="drawerWidth" :mask="true">
             <div class="drawer_nav_item active">{{$t('nav.shouye')}}</div>
-            <div class="drawer_nav_item">{{$t('nav.duihuan')}}</div>
-            <div class="drawer_nav_item">{{$t('nav.wode')}}</div>
+            <div class="drawer_nav_item" @click="coomSoon">{{$t('nav.duihuan')}}</div>
+            <div class="drawer_nav_item" @click="coomSoon">{{$t('nav.wode')}}</div>
             <div class="drawer_nav_item" v-if="!isWalletConnected" v-on:click="conectarWalletEthereum">
                 {{$t('nav.lianjieqianbao')}}
             </div>
@@ -66,28 +66,7 @@ export default {
         return status;
     },
     computed: {
-        maskClass: function () {
-            return {
-                'mask-show': (this.mask && this.display),
-                'mask-hide': !(this.mask && this.display),
-                'inner': this.inner
-            }
-        },
-        mainClass: function () {
-            return {
-                'main-show': this.display,
-                'main-hide': !this.display,
-                'inner': this.inner
-            }
-        },
-        mainStyle: function () {
-            return {
-                display: this.display ? 'block' : 'none',
-                width: this.width,
-                right: this.display ? '0' : `-${this.width}`,
-                borderLeft: this.mask ? 'none' : '1px solid #eee'
-            }
-        }
+       
     },
     mounted() {
         if (this.inner) {
@@ -119,6 +98,12 @@ export default {
 </script>
 
 <style lang="css" scoped>
+.navbar{
+    position: absolute !important;
+    top: 0px;
+    width:100%;    
+    z-index: 100;
+}
 .logo{
    height: 36px;
 }
@@ -144,12 +129,7 @@ export default {
     font-weight: 600;
     color:#ffffff;    
 }
-.navbar{
-    position: absolute !important;
-    top: 0px;
-    width:100%;
-    height: 100%;
-}
+
 .topbar{
     height: 96px;
     display: flex;

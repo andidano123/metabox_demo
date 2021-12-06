@@ -14,7 +14,12 @@
     "ad2": "Happiness and benefits coexist",
     "ad3": "Meta Box provides collectors with an opportunity to disassemble rare digital collectibles. Each collection is composed of an individually packaged NFT edited by an independent curator. Although the prices of individual items in each series are different, each NFT sells one item at a time at the same price",
     "plan_step": "Planning steps:",
-    "plan_content": "Plan content description Plan content description, plan content description Plan content description Plan content description. Description of plan content Description of plan content description of plan content description of plan content description",
+    "plan_content1": "1Plan content description Plan content description, plan content description Plan content description Plan content description. Description of plan content Description of plan content description of plan content description of plan content description",
+    "plan_content2": "2Plan content description Plan content description, plan content description Plan content description Plan content description. Description of plan content Description of plan content description of plan content description of plan content description",
+    "plan_content3": "3Plan content description Plan content description, plan content description Plan content description Plan content description. Description of plan content Description of plan content description of plan content description of plan content description",
+    "plan_content4": "4Plan content description Plan content description, plan content description Plan content description Plan content description. Description of plan content Description of plan content description of plan content description of plan content description",
+    "plan_content5": "5Plan content description Plan content description, plan content description Plan content description Plan content description. Description of plan content Description of plan content description of plan content description of plan content description",
+    "plan_content6": "6Plan content description Plan content description, plan content description Plan content description Plan content description. Description of plan content Description of plan content description of plan content description of plan content description",
     "intro": "Community introduction",
     "about": "About",
     "team": "Team",
@@ -26,6 +31,7 @@
     "start": "Start using",
     "head_box": "Avatar Series Blind Box",
     "art_box": "Art Collection Series Blind Box",
-    "comesoon": "Coming Soon"
+    "comesoon": "Coming Soon",
+    "blindbox": "Blind Box"
   }
 }

@@ -1,15 +1,16 @@
 <template>
 <div >    
-    <navbar :isWalletConnected="isWalletConnected"  
+   <navbar :isWalletConnected="isWalletConnected"  
         @conectarWalletEthereum="conectarWalletEthereum" :displayEthAddress="displayEthAddress"/>    
     <div class="topsection">        
-        <div class="flex" >
+        <img class="top_hidden_back" src="../../../assets/top_back.png"/>
+        <div class="flex top_content" >
             <div class="expand only_pc"></div>
-            <div class="top_button_div">
+            <div class="top_button_div">                
                 <div class="welcome_text">{{$t('index.slogan')}}</div>
                 <div class="flex_center" style="margin-top:35px;">
-                    <div class="top_button flex_center" style="margin-right:30px">{{$t('index.about_more')}}</div>
-                    <div class="top_button flex_center">{{$t('index.white_paper')}}</div>
+                    <div class="top_button flex_center" style="margin-right:30px" @click="coomSoon">{{$t('index.about_more')}}</div>
+                    <div class="top_button flex_center" @click="coomSoon">{{$t('index.white_paper')}}</div>
                 </div>
             </div>   
         </div>
@@ -26,29 +27,18 @@
             <div class="second_text3">
                 {{$t('index.ad3')}}
             </div>
-            <div class="roadmap_div" style="margin-top:90px;">
-                <div class="roadmap_date">2021/11</div>
-                <div class="roadmap_date_active">2021/12</div>
-                <div class="roadmap_date">2022/01</div>
-                <div class="roadmap_date">2022/05</div>
-                <div class="roadmap_date">2022/10</div>
-                <div class="roadmap_date">2022/12</div>
-            </div>
-            <div class="roadmap_div">
-                <img class="roadmap_item" src="../../../assets/circle1.png"/>
-                <img class="roadmap_item_active" src="../../../assets/circle2.png"/>
-                <img class="roadmap_item" src="../../../assets/circle1.png"/>
-                <img class="roadmap_item" src="../../../assets/circle1.png"/>
-                <img class="roadmap_item" src="../../../assets/circle1.png"/>
-                <img class="roadmap_item" src="../../../assets/circle1.png"/>
-                <div class="roadmap_line"></div>
-            </div>
+            <roadmap :init_select="current_roadmap" @select_date="select_date"/>
             <div class="second_text4">{{$t('index.plan_step')}}</div>
-            <div class="second_text5">{{$t('index.plan_content')}}</div>
+            <div class="second_text5" v-if="current_roadmap==1">{{$t('index.plan_content1')}}</div>
+            <div class="second_text5" v-if="current_roadmap==2">{{$t('index.plan_content2')}}</div>
+            <div class="second_text5" v-if="current_roadmap==3">{{$t('index.plan_content3')}}</div>
+            <div class="second_text5" v-if="current_roadmap==4">{{$t('index.plan_content4')}}</div>
+            <div class="second_text5" v-if="current_roadmap==5">{{$t('index.plan_content5')}}</div>
+            <div class="second_text5" v-if="current_roadmap==6">{{$t('index.plan_content6')}}</div>
         </div>        
     </div>
     <div class="intro_section" >
-        <div class="intro_text1">{{$t('index.intro')}}</div>
+        <div class="intro_text1">{{$t('index.blindbox')}}</div>
         <div class="intro_pic_div">            
             <div class="intro_item">
                 <img style="visibility: hidden; width:100%; height:100%;" src="../../../assets/intro2.png"/>
@@ -73,23 +63,20 @@
     </div>
     <div class="copyright" >
         <div class="about">
-            <div class="title1">{{$t('index.about')}}</div>
-            <div class="about_list">
-                <div class="text1">{{$t('index.team')}}</div>
-                <div class="text1">{{$t('index.cooperation')}}</div>
-                <div class="text1">{{$t('index.society')}}</div>
-                <div class="text1">{{$t('index.contact_us')}}</div>
-                <div class="text1">{{$t('index.guide')}}</div>
-                <div class="text1">{{$t('index.protocol')}}</div>
+            <div class="title1">{{$t('index.contact_us')}}</div>
+            <div class="contact_list">
+                <img src="../../../assets/twitter.svg"/>
+                <img src="../../../assets/telegram.svg"/>
+                <img src="../../../assets/discord.svg"/>                
             </div>
         </div>
-        <div class="about">
+        <div class="about" style="display:none">
             <div class="title1" >{{$t('index.start')}}</div>
             <div class="about_list">
                 <div class="text1">{{$t('index.head_box')}}</div>
                 <div class="text1">{{$t('index.art_box')}}</div>
-            </div>
-        </div>   
+            </div>            
+        </div>
         <div class="copyright_text">Copyright Ⓒ 2021 the Meta Box</div>
     </div>    
     
@@ -99,6 +86,7 @@
 <script>
 
 import navbar from '../../controls/navbar'
+import roadmap from '../../controls/roadmap'
 import { connectToEthereum } from "../../../utils/helpers.js";
 
 var status = {    
@@ -108,9 +96,10 @@ var status = {
     ethAddress: "None",
     displayEthAddress: "No conectado",
     web3: null,
+    current_roadmap: 2
 };
 export default {
-    components: { navbar },
+    components: { navbar, roadmap },
     name: 'home',
     props: {
         msg: String,
@@ -149,6 +138,10 @@ export default {
         },
         coomSoon: function(){
             this.$toast.center(this.$t('index.comesoon'));
+        },
+        select_date(idx){
+            console.log(idx);
+            this.current_roadmap = idx;
         }
     }
 }
