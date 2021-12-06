@@ -1,0 +1,43 @@
+#app {
+    font-family: Avenir, Helvetica, Arial, sans-serif;
+    text-align: center;
+    color: #2c3e50;
+}
+div{    
+    box-sizing: border-box;
+}
+.flex{
+    display: flex;
+}
+.flex_center{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.title1{
+    font-size: 24px;
+    font-weight: bold;
+    color: #FFFFFF;
+    line-height: 35px;
+}
+.text1{
+    font-size: 21px;
+    font-weight: 400; 
+    color: #FFFFFF88;
+    line-height: 30px;
+}
+.expand{
+    flex:1;
+ }
+/* PC */
+@media (min-width: 751px) {
+    .only_mobile{
+        display:none !important;
+    }
+}
+/* Mobile */
+@media (max-width: 750px) {
+    .only_pc{
+        display:none !important;
+    } 
+}

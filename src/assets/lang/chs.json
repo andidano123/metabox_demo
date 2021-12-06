@@ -1,0 +1,31 @@
+{
+  "nav": {
+    "shouye": "首页",
+    "duihuan": "兑换",
+    "wode": "我的",
+    "lianjieqianbao": "连接钱包"
+  },
+  "index": {
+    "slogan": "太虚灵境 得物唯一",
+    "about_more": "了解更多",
+    "white_paper": "白皮书",
+    "about_us": "关于我们",
+    "ad1": "神秘的NFT获得过程",
+    "ad2": "快乐与收益并存",
+    "ad3": "Meta Box为收藏者提供了拆开稀有数字收藏品的机会。每个藏品都由独立策展人编辑的独立包装NFT组成。尽管每个系列的单个商品价格各不相同，但每个NFT都以相同的价格一次销售一个",
+    "plan_step": "计划步骤：",
+    "plan_content": "计划内容说明计划内容说明，计划内容说明计划内容说明计划内容说明。计划内容说明计划内容说明计划内容说明计划内容说明",
+    "intro": "社区介绍",
+    "about": "关于",
+    "team": "团队",
+    "cooperation": "合作",
+    "society": "社区",
+    "contact_us": "联系我们",
+    "guide": "使用指南",
+    "protocol": "免责声明",
+    "start": "开始使用",
+    "head_box": "头像系列盲盒",
+    "art_box": "艺术收藏品系列盲盒",
+    "comesoon": "即将开放"
+  }
+}
