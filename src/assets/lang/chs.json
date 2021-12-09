@@ -5,6 +5,9 @@
     "wode": "我的",
     "lianjieqianbao": "连接钱包"
   },
+  "common": {
+    "back":"返回"
+  },
   "index": {
     "slogan": "太虚灵境 得物唯一",
     "about_more": "了解更多",
@@ -32,6 +35,22 @@
     "head_box": "头像系列盲盒",
     "art_box": "艺术收藏品系列盲盒",
     "comesoon": "即将开放",
-    "blindbox": "盲合"
+    "blindbox": "盲盒"    
+  },
+  "mine":{
+    "openbox": "去开盲盒",
+    "empty_text1": "这里空空如也～",
+    "empty_text2": "开启盲盒，回味心动一刻！"
+  },
+  "detail":{
+    "mint_count": "可mint数量",
+    "total_count": "总数量",
+    "contract": "合约地址",
+    "mint":"Mint",
+    "success_buy_nft":"恭喜～获得一枚NFT",
+    "nftname":"NFT名称",
+    "box_series":"所属盲盒主题系列：",
+    "tokenid":"Token ID:",
+    "next":"继续收集"
   }
 }

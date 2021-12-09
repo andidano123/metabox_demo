@@ -1,20 +1,18 @@
-<template>    
-    <div class="navbar">
-        <div class="topbar">
+<template>
+    <div class="navbar" >
+        <div class="topbar" :style="mainStyle">
             <img class="logo" src="../../assets/logo.png" alt="logo" />
             <div class="expand"></div>
-            <div class="nav_item active" v-on:click="switchLanguage">
+            <div class="nav_item active" v-on:click="changeLang($i18n)">
                 <img src="../../assets/icon_world.png" alt="world" />
                 {{LANG}}
             </div>
             
-            <div class="nav_item active only_pc">                
-                {{$t('nav.shouye')}}
-            </div>
-            <div class="nav_item only_pc" @click="coomSoon">{{$t('nav.duihuan')}}</div>
-            <div class="nav_item only_pc" @click="coomSoon">{{$t('nav.wode')}}</div>
+            <div class="nav_item only_pc" :class="{active:selected=='home'}" @click="gotoHome">{{$t('nav.shouye')}}</div>
+            <div class="nav_item only_pc" :class="{active:selected=='swap'}" @click="coomSoon">{{$t('nav.duihuan')}}</div>
+            <div class="nav_item only_pc" :class="{active:selected=='mine'}" @click="gotoMine">{{$t('nav.wode')}}</div>
 
-            <div class="nav_item only_pc" v-if="!isWalletConnected" v-on:click="conectarWalletEthereum">
+            <div class="nav_item only_pc" v-if="!isWalletConnected" v-on:click="connectWallet">
                 {{$t('nav.lianjieqianbao')}}
             </div>
             <div class="nav_item address only_pc" v-if="isWalletConnected" >
@@ -28,10 +26,10 @@
         <drawer title="我是一个抽屉组件" 
             :display.sync="display" :inner="false" 
             :width="drawerWidth" :mask="true">
-            <div class="drawer_nav_item active">{{$t('nav.shouye')}}</div>
-            <div class="drawer_nav_item" @click="coomSoon">{{$t('nav.duihuan')}}</div>
-            <div class="drawer_nav_item" @click="coomSoon">{{$t('nav.wode')}}</div>
-            <div class="drawer_nav_item" v-if="!isWalletConnected" v-on:click="conectarWalletEthereum">
+            <div class="drawer_nav_item" :class="{active:selected=='home'}" @click="gotoHome">{{$t('nav.shouye')}}</div>
+            <div class="drawer_nav_item" :class="{active:selected=='swap'}" @click="coomSoon">{{$t('nav.duihuan')}}</div>
+            <div class="drawer_nav_item" :class="{active:selected=='mine'}" @click="gotoMine">{{$t('nav.wode')}}</div>
+            <div class="drawer_nav_item" v-if="!isWalletConnected" v-on:click="connectWallet">
                 {{$t('nav.lianjieqianbao')}}
             </div>
             <div class="drawer_nav_item address" v-if="isWalletConnected" >
@@ -42,31 +40,45 @@
 </template>
 
 <script>
-var status = {
-    display: false,
-    drawerWidth: '60%',
-    LANG: "CN",
-};
 import drawer from './drawer'
-
+import show_message from './notice.js'
+import {
+    mapGetters,
+    mapActions
+} from "vuex"
 export default {
     components: { drawer},
-    props: {
-        // 是否打开
-        isWalletConnected: {
+    props: { 
+        selected :{
+            type: String,
+            default: 'home'
+        },
+        showDialog :{
             type: Boolean,
             default: false
-        },      
-        displayEthAddress: {
-            type: String,
-            default: 'No Connected'
         }
     },
     data: function () {
-        return status;
+        return {
+            display: false,
+            drawerWidth: '60%',            
+        };
     },
     computed: {
-       
+        //这个是留给template 使用
+       ...mapGetters([
+            "LANG",
+            "isWalletConnected",
+            "displayEthAddress",
+        ]),
+        mainStyle: function () {            
+            return {
+                filter: this.showDialog?'blur(5px)':'blur(0px)'
+            };
+        }
+    },
+    created() {
+        
     },
     mounted() {
         if (this.inner) {
@@ -74,24 +86,24 @@ export default {
             box.style.position = 'relative'
         }
     },
-    methods: {        
-        switchLanguage : function (){
-            if(this.$i18n.locale=="chs")
-            {
-                this.$i18n.locale="en";
-                this.LANG = "EN";
-            }
-            else{
-                this.$i18n.locale="chs";            
-                this.LANG = "CN";
-            }                
-            // this.$i18n.locale = this.lang;
-        },        
-        conectarWalletEthereum : function(){            
-            this.$emit("conectarWalletEthereum");            
-        },
+    methods: {    
+        ...mapActions([
+            "changeLang",
+            "connectWallet",
+        ]),    
+        // conectarWalletEthereum : function(){            
+        //     // this.$emit("conectarWalletEthereum");            
+        // },
         coomSoon: function(){
-            this.$toast.center(this.$t('index.comesoon'));
+            show_message(this, 0, this.$t('index.comesoon'));
+        },
+        gotoMine: function(){
+            if(this.selected != "mine")
+                this.$router.push("/mine");
+        },
+        gotoHome: function(){
+            if(this.selected != "home")
+                this.$router.push("/");
         }
     }
 }

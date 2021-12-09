@@ -9,25 +9,45 @@ div{
 .flex{
     display: flex;
 }
+.row{    
+    flex-direction: row;
+}
+.column{    
+    flex-direction: column;
+}
 .flex_center{
     display: flex;
     align-items: center;
     justify-content: center;
 }
+/* 首页 底部标题 */
 .title1{
     font-size: 24px;
     font-weight: bold;
     color: #FFFFFF;
     line-height: 35px;
 }
+/* 首页 底部文字 */
 .text1{
     font-size: 21px;
     font-weight: 400; 
     color: #FFFFFF88;
     line-height: 30px;
 }
+/* 我的 标题--标准 */
+.title2{
+    font-size: 32px;
+    font-weight: 500;
+    color: #FFFFFF;
+    line-height: 45px;
+}
 .expand{
     flex:1;
+ }
+.flex_center{
+    display: flex;
+    align-items:center;
+    justify-content:center;
  }
 /* PC */
 @media (min-width: 751px) {
@@ -40,4 +60,96 @@ div{
     .only_pc{
         display:none !important;
     } 
+    .title2{
+        font-size: 20px;
+    }
 }
+
+.progress{    
+    position: absolute;
+    bottom:10px;
+    left:5px; right:5px;    
+    height: 6px;    
+    border-radius: 15px;
+    padding:1px;
+    background: rgba(0, 0, 0, 0.3);
+    box-sizing: border-box;
+}
+.progress .color{
+    position: absolute;
+    background: linear-gradient(270deg, #5572D9 0%, #805BCA 100%);
+    width: 0px;
+    height: 4px;
+    border-radius: 15px;
+    animation: progres 4s infinite linear;    
+    animation-iteration-count:1;
+}
+.progress .color1{    
+    background: linear-gradient(270deg, #5572D9 0%, #805BCA 100%);
+}
+.progress .color2{    
+    background: #FFFFFF;    
+}
+.progress .color3{    
+    background: #FFFFFF;    
+}
+@keyframes progres{
+    0%{
+      width: 0%;
+    }
+    25%{
+        width: 50%;
+    }
+    50%{
+        width: 75%;
+    }
+    75%{
+        width: 85%;
+    }
+    100%{
+        width: 100%;
+    }
+};
+.notice_dialog{
+    width:340px !important; 
+    height:100px;        
+    margin-top:100px !important;
+    z-index: 1000 !important;
+}
+
+.notice_body{
+    position: relative;    
+    width:100% !important;
+    height:100px;   
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content:center;
+    padding:10px;
+}
+
+@media (max-width: 750px) {
+    .notice_dialog{
+        width:90% !important;
+    } 
+}
+.notice_close_btn{
+    position: absolute;
+    right:10px;
+    top:10px;
+    width:24px;
+}
+.notice_text{    
+    font-size: 16px;
+    font-weight: 400;
+    color: #FFFFFF;
+    line-height: 22px;    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.notice_icon{
+    width:24px;
+    margin-right: 10px;
+}
+

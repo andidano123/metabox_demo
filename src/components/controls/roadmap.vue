@@ -21,9 +21,6 @@
 </template>
 
 <script>
-var status = {
-    current_select: 0,
-};
 export default {
     components: {},
     props: {
@@ -34,7 +31,9 @@ export default {
         },        
     },
     data: function () {
-        return status;
+        return {
+            current_select: 0,
+        };
     },
     computed: {        
         mainClass: function () {
@@ -71,7 +70,6 @@ export default {
 .roadmap_div{
     display:flex;
     align-items: center;    
-    width:90%;
     height:32px;
     justify-content:space-between;
     position: relative;    
@@ -110,9 +108,10 @@ export default {
 @media (max-width: 750px) {
     .roadmap_date{
         font-size:10px;
+        font-weight: 400;
     }
     .roadmap_date.active{
-        font-size:12px;
+        font-size:10px;
     }
 }
 </style>
